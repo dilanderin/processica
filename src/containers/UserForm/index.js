@@ -14,18 +14,17 @@ const UserForm = () => {
   useEffect(async () => {
     if (id) {
       const data = await UserService.fetchUser(id);
-      console.log(data);
       setValues(data.data);
     }
   }, []);
 
   const onSubmit = async (values) => {
     if (!id) {
-      const response = await UserService.createUser({ ...values });
-      console.log(response);
+      await UserService.createUser({ ...values });
+      console.log('Successfully created');
     } else {
-      const response = await UserService.updateUser(id, { ...values });
-      console.log(response);
+      await UserService.updateUser(id, { ...values });
+      console.log('Successfully updated');
     }
   };
 
@@ -33,6 +32,12 @@ const UserForm = () => {
     const errors = {};
     if (!values.name) {
       errors.name = 'Required';
+    }
+    if (!values?.gender) {
+      errors.gender = 'Required';
+    }
+    if (!values.status) {
+      errors.status = 'Required';
     }
     if (values.email) {
       if (
@@ -44,7 +49,7 @@ const UserForm = () => {
         errors.email = 'Email must be valid';
       }
     } else if (!values.email) {
-      errors.email = 'Required!';
+      errors.email = 'Required';
     }
     return errors;
   };
@@ -86,7 +91,7 @@ const UserForm = () => {
 
             <SelectContainer>
               <label>Gender</label>
-              <Field name="gender" component="select">
+              <Field name="gender" component="select" required={true}>
                 <option />
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -95,7 +100,7 @@ const UserForm = () => {
 
             <SelectContainer>
               <label>Status</label>
-              <Field name="status" component="select">
+              <Field name="status" component="select" required={true}>
                 <option />
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
