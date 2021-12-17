@@ -62,7 +62,7 @@ const UserForm = () => {
         onSubmit={onSubmit}
         validate={validate}
         initialValues={{ ...values }}
-        render={({ handleSubmit, form, values }) => (
+        render={({ handleSubmit, form, values, submitting, pristine }) => (
           <FormElement onSubmit={handleSubmit}>
             <Field name="name">
               {({ input, meta }) => (
@@ -109,11 +109,12 @@ const UserForm = () => {
                   type="button"
                   onClick={() => cancel(values, form)}
                   mr="15px"
+                  disabled={submitting || pristine}
                 >
                   Cancel
                 </Button>
               )}
-              <Button type="submit">{id ? 'Update' : 'Submit'}</Button>
+              <Button type="submit" disabled={submitting || pristine}>{id ? 'Update' : 'Submit'}</Button>
             </ButtonContainer>
           </FormElement>
         )}
