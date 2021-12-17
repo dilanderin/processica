@@ -19,7 +19,7 @@ export const Main = styled.div`
   border: solid 1px ${Colors.grey[30]};
   background-color: #fff;
   border-radius: 8px;
-  width: 470px;
+  min-width: 470px;
   padding: 70px 60px;
   display: flex;
   justify-content: center;

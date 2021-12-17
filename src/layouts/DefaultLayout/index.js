@@ -6,13 +6,13 @@ import { Wrapper, Main, Center } from './styles';
 
 const DefaultLayout = ({ children }) => (
   <Wrapper>
-    <Center>
-      <Main>{children}</Main>
-    </Center>
-
     <nav>
       <Link to="/">Create User</Link> | <Link to="/user-list">User List</Link>
     </nav>
+
+    <Center>
+      <Main>{children}</Main>
+    </Center>
 
     <div>Dilan Derin</div>
   </Wrapper>

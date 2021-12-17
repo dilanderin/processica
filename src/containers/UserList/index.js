@@ -3,6 +3,7 @@ import UserService from '../../services/user';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
+import DefaultLayout from '../../layouts/DefaultLayout';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -22,7 +23,7 @@ const UserList = () => {
   };
 
   return (
-    <div>
+    <DefaultLayout>
       <h1>User List</h1>
       <table>
         <thead>
@@ -63,7 +64,7 @@ const UserList = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </DefaultLayout>
   );
 };
 export default UserList;
